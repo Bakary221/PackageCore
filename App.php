@@ -41,15 +41,20 @@ class App {
                 $type = $param->getType();
                 if ($type && !$type->isBuiltin()) {
                     $depClass = $type->getName(); // nom de la classe
-                    $dependencies[] = self::getDependency($depClass); // injection récursive
+                    $dependencies[] = self::getDependency($depClass); // injection récursiv
                 } else {
+                    
+                    if($className==='PDO'){
+                        $dependencies =[DSN, USER,PASS];
+                        break;
+                    };
+                    // var_dump($dependencies); die;
                     // Valeurs par défaut si existantes
                     $dependencies[] = $param->isDefaultValueAvailable()
                         ? $param->getDefaultValue()
                         : null;
                 }
             }
-            // var_dump($reflector); die;
             if (method_exists($className, 'getInstance')) {
                 $instance = $className::getInstance(...$dependencies);
             } else {
