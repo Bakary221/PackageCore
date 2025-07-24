@@ -1,0 +1,17 @@
+{
+    "type": "project",
+    "name": "bakary/core",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Bakary\\Core\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bakary",
+            "email": "bakarydiassy28@gmail.com"
+        }
+    ],
+    "require": {}
+}
