@@ -13,7 +13,7 @@ class Router
             }
             $controllerName = $routes[$uri]['controller'];
             $methodName = $routes[$uri]['method'];
-            $controller = App::getDependency($controllerName);
+            $controller = App::getDependency('controllers', $controllerName);
             $controller->$methodName();
         }
         else{
